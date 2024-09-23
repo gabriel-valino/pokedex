@@ -10,6 +10,13 @@ export function PokeList() {
       <PokemonCard />
       <PokemonCard />
       <PokemonCard />
+      <PokemonCard />
+      <PokemonCard />
+      <PokemonCard />
+      <PokemonCard />
+      <PokemonCard />
+      <PokemonCard />
+      <PokemonCard />
     </PokeListContainer>
   )
 }

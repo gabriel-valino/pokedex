@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 export const HomeContainer = styled.main`
   display: flex;
-  max-width: 108rem;
   margin-top: 2rem;
   padding-left: 8vw;
   gap: 2rem;

@@ -6,7 +6,7 @@ export function PokemonCard () {
   return (
     <PokemonCardContainer>
       <img src={squirtle} alt="Squirtle" />
-      <p>Nº 1</p>
+      <p>Nº 7</p>
       <h3>Squirtle</h3>
         
       <PokemonTypeContainer>
