@@ -1,6 +1,6 @@
 import { PokemonCardContainer, PokemonTypeContainer } from "./styles";
 
-import squirtle from '../../../public/pokemons/007.png'
+import squirtle from '/pokemons/007.png'
 
 export function PokemonCard () {
   return (

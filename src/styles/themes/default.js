@@ -2,7 +2,7 @@ export const defaultTheme = {
   white: '#FFF',
   dark: '#333333',
   background: '#F3F3F3',
-  border: 'e0e0e0',
+  border: '#D9D8D8',
   text: '#aaadaf',
   gray: '#999c9f',
   'search-button': '#ff5350',

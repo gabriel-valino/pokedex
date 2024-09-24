@@ -5,7 +5,6 @@ export const PokemonCardContainer = styled.div`
   flex-direction: column;
   align-items: center;
 
-  margin: 10px;
   padding: 20px;
   height: auto;
   min-width: 20%;
@@ -14,6 +13,7 @@ export const PokemonCardContainer = styled.div`
 
   background-color: white;
   box-sizing: content-box;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   cursor: pointer;
   border: 2px solid transparent; 
   transition: 100ms ease-out;
@@ -39,7 +39,7 @@ export const PokemonCardContainer = styled.div`
   }
 
   &:hover {
-    border-color: ${(props) => props.theme['gray']};
+    border-color: ${(props) => props.theme['border']};
   }
   &:hover img{
     scale: 120%;

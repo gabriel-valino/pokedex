@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const SearchBarContainer = styled.div`
   display: flex;
   border-radius: 20px;
-  box-shadow: #ededed 0 10px 10px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   padding: 10px;
   padding-left: 18px;
   background-color: #fff;
