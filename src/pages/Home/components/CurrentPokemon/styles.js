@@ -75,7 +75,7 @@ export const StatusContainer = styled.div`
   color: ${(props) => props.theme['dark']};
   display: flex;
   flex-direction: column;
-  margin-top: 16px;
+  margin-top: 10px;
   align-items: center;
   justify-content: center;
 `
@@ -123,10 +123,10 @@ export const AttributesContainer = styled.div`
 
   > div {
     text-align: center;
- 
   }
 
   > div p {
+    margin-top: 10px;
     padding: 2px 8px;
     border-radius: 99999px;
     background-color: ${(props) => props.theme['background']};

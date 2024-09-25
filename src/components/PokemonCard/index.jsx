@@ -1,22 +1,38 @@
-import { PokemonCardContainer, PokemonTypeContainer } from "./styles";
+import { PokemonCardContainer } from "./styles";
+import { PokemonTypeTags } from '../PokemonTypeTag' 
+import { useEffect, useState } from "react";
+import { fetchPokemonDetails } from "../../api/api";
 
-import squirtle from '/pokemons/007.png'
+export function PokemonCard ({ data }) {
+  const [details, setDetails] = useState(null)
+  const { name, url } = data
 
-export function PokemonCard () {
+  useEffect(() => {
+    async function getPokemonDetails() {
+      try {
+        const data = await fetchPokemonDetails(url)
+        setDetails(data)
+      } catch (error) {
+        console.error('Erro ao buscar detalhes do pokémons:', error);
+      }
+    }
+
+    getPokemonDetails()
+  }, [url])
+
+  console.log(details)
+
   return (
-    <PokemonCardContainer>
-      <img src={squirtle} alt="Squirtle" />
-      <p>Nº 7</p>
-      <h3>Squirtle</h3>
+    <>
+      {details  && (
+        <PokemonCardContainer>
+        <img src={details.imgUrl} alt={name} />
+        <p>Nº {details.id}</p>
+        <h3>Squirtle</h3>
+        <PokemonTypeTags types={details.types} name={name}/>
         
-      <PokemonTypeContainer>
-        <div>
-          <span>water</span>
-        </div>
-        <div>
-          <span>eletric</span>
-        </div>
-      </PokemonTypeContainer>
-    </PokemonCardContainer>
+      </PokemonCardContainer>
+      )}
+    </>
   )
 }

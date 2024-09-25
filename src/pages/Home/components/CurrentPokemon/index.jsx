@@ -1,9 +1,9 @@
 import { AttributesContainer, CurrentPokemonContainer, EvolutionsContainer, StatusContainer } from "./styles";
 
-import { PokemonTypeContainer } from "../../../../components/PokemonCard/styles";
 import { PokemonStatus } from "../../../../components/PokemonStatus";
 
 import squirtle from '/pokemons/007.png'
+import { PokemonTypeTags } from "../../../../components/PokemonTypeTag";
 
 export function CurrentPokemon() {
 
@@ -15,14 +15,7 @@ export function CurrentPokemon() {
         <p>Nº 7</p>
         <h1>Squirtle</h1>
 
-        <PokemonTypeContainer>
-          <div>
-            <span>water</span>
-          </div>
-          <div>
-            <span>eletric</span>
-          </div>
-        </PokemonTypeContainer>
+        <PokemonTypeTags types={['water']} name="squirtle"/>
 
         <h2>Characteristics</h2>
         <span>Squirtle is a small, light-blue Pokémon with an appearance similar to a turtle.</span>

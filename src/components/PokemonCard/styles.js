@@ -46,21 +46,3 @@ export const PokemonCardContainer = styled.div`
   }
 `
 
-export const PokemonTypeContainer = styled.div`
-  margin-top: .5rem;
-  display: flex;
-  gap: .7rem;
-
-  div {
-    padding: 3px 7px;
-    line-height: 100%;
-    background-color: ${(props) => props.theme['blue']};
-    border-radius: 5px;
-
-    span {
-      color: ${(props) => props.theme['dark']};
-      font-weight: 600;
-      font-size: 14px;
-    }
-  }
-`

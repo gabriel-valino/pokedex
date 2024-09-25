@@ -4,7 +4,7 @@ export const PokemonStatusContainer = styled.div`
   display: flex;
   gap: 10px;
   text-align: center;
-  margin-top: 16px;
+  margin-top: 10px;
 
   > div.attribute {
     display: flex;

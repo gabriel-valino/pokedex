@@ -15,7 +15,22 @@ export const defaultTheme = {
   pink: '#fb94a8',
   total: '#88aaea',
 
-  'red-500': '#ff7572',
-
-  'yellow-500': '#FBA94C',
+  
+  normal: '#A8A878',
+  fire: '#F08030',
+  water: '#6890F0',
+  eletric: '#F8D030',
+  grass: '#78C850',
+  ice: '#A8E1DD',
+  fighting: '#C03028',
+  poison: '#A040A0',
+  ground: '#E0C068',
+  flying: '#A890F0',
+  psychic: '#F85888',
+  bug: '#A8B820',
+  rock: '#B8A038',
+  dragon: '#7038F8',
+  dark: '#705848',
+  steel: '#B8B8D0',
+  fairy: '#F2BCC2',
 }

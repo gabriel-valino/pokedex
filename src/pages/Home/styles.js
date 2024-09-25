@@ -11,4 +11,5 @@ export const PokedexInfo = styled.div`
   flex: 4;
   display: flex;
   flex-direction: column;
+  padding-bottom: 70px;
 `
