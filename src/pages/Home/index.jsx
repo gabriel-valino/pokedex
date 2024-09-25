@@ -9,13 +9,11 @@ export function Home() {
   return (
     <>
       <Header />
-
       <HomeContainer>
         <PokedexInfo>
           <SearchBar />
           <PokeList />
         </PokedexInfo>
-        
         <CurrentPokemon />
       </HomeContainer>
     </>

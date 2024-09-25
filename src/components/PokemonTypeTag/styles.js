@@ -10,7 +10,7 @@ export const PokemonTypeContainer = styled.div`
 export const PokemonType = styled.div`
   padding: 3px 7px;
   line-height: 100%;
-  background-color: ${(props) => props.theme[props.type]};
+  background-color: ${(props) => props.theme[props.$type]};
   border-radius: 5px;
 
   span {

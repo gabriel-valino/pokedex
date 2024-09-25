@@ -1,14 +1,15 @@
 import { PokemonType, PokemonTypeContainer } from "./styles";
 
 export function PokemonTypeTags ({ types, name }) {
-
+  
   return (
-    <PokemonTypeContainer type>
+    <PokemonTypeContainer>
       {types.map((type) => {
+        const key = `${type}-${name}`
         return (
-        <PokemonType key={`${type}-${name}`} type={type}>
-          <span>{type}</span>
-        </PokemonType>)
+          <PokemonType key={key} $type={type}>
+            <span>{type}</span>
+          </PokemonType>)
       })}
     </PokemonTypeContainer>
   )

@@ -1,9 +1,9 @@
 import axios from "axios"
 import { getPokemonIdByUrl } from "../utils/getPokemonIdByUrl"
-import { getPokemonImageUrlById } from "../utils/getPokemonImageUrl"
+import { getPokemonImageUrlById } from "../utils/getPokemonImageUrlById"
 import { getPokemonTypes } from "../utils/getPokemonTypes"
 
-export async function fetchPokemons(pageParam = 0) {
+export async function fetchPokemons(pageParam = 0, search = "") {
   const limit = 15
   const offset = pageParam * limit
 
@@ -13,7 +13,7 @@ export async function fetchPokemons(pageParam = 0) {
   return response.data
 } 
 
-export async function fetchPokemonDetails(url) {
+export async function fetchPokemonFirstDetails(url) {
   const response = await axios
     .get(url)
 
@@ -30,3 +30,14 @@ export async function fetchPokemonDetails(url) {
     name: details.name
   }
 } 
+
+export async function fetchPokemonDetails(url) {
+  const response = await axios
+    .get(url)
+
+  const details = response.data
+
+  return details
+} 
+
+

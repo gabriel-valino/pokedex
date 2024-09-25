@@ -32,9 +32,9 @@ export const CurrentPokemonContainer = styled.div`
       overflow-y: scroll;
       scrollbar-width: none;
 
-      @media (max-height: 800px) {
-      padding-bottom: 15vh;
-    }
+      @media (max-height: 700px) {
+        padding-bottom: 12vh;
+      }
     }
    
     > div > p {

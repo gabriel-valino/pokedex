@@ -1,12 +1,12 @@
 import { SearchBarContainer } from "./styles";
 
-import searchIcon from '../../../../../public/search.svg'
+import searchIcon from '/search.svg'
 
 export function SearchBar() {
   return (
-    <SearchBarContainer>
-      <input type="text" placeholder="Busque um pokémon"/>
-      <img src={searchIcon} alt="" />
+    <SearchBarContainer >
+      <input type="text" placeholder="Search a pokemon"/>
+      <img src={searchIcon} alt="search icon - pokeball" />
     </SearchBarContainer>
   )
 }

@@ -19,7 +19,7 @@ export const defaultTheme = {
   normal: '#A8A878',
   fire: '#F08030',
   water: '#6890F0',
-  eletric: '#F8D030',
+  electric: '#F8D030',
   grass: '#78C850',
   ice: '#A8E1DD',
   fighting: '#C03028',

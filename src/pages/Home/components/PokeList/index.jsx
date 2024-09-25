@@ -1,28 +1,47 @@
 import { PokeListContainer } from "./styles";
 
 import { PokemonCard } from "../../../../components/PokemonCard";
-import { fetchPokemons } from "../../../../api/api";
-import { useEffect, useState } from "react";
+import { useCallback, useRef } from "react";
+import { usePokemon } from "../../../../contexts/PokemonsContext";
 
 export function PokeList() {
-  const [pokemons, setPokemons] = useState(null)
+  const { pokemons, hasNextPage, fetchNextPage, isFetchingNextPage, setCurrentPokemon } = usePokemon()
 
-  useEffect(() => {
-    async function getPokemons() {
-      const pokemons = await fetchPokemons()
+  const observer = useRef()
 
-      setPokemons(pokemons.results)
-      console.log(pokemons.results)
-    }
-
-    getPokemons()
-  },[])
+  const lastPokemonElementRef = useCallback(
+    (node) => {
+      if (isFetchingNextPage) return;
+      if (observer.current) observer.current.disconnect();
+      observer.current = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && hasNextPage) {
+          fetchNextPage();
+        }
+      }, {
+        rootMargin: "500px"
+      });
+      if (node) observer.current.observe(node);
+    },
+    [isFetchingNextPage, fetchNextPage, hasNextPage]
+  )
 
   return (
     <PokeListContainer>
-      {pokemons && pokemons.map(pokemon => {
-        return <PokemonCard key={pokemon.url} data={pokemon}/>
-      })}
+      {pokemons && pokemons.pages.map((page, pageIndex) => page.results.map((pokemon, pokemonIndex, resultsArray) => {
+        const isLastPokemon = pageIndex === pokemons.pages.length - 1 && pokemonIndex === resultsArray.length - 1
+
+        return (
+          <div 
+            key={pokemon.url} 
+            ref={isLastPokemon ? lastPokemonElementRef : null}
+            onClick={() => setCurrentPokemon(pokemon)}
+          >
+            <PokemonCard 
+              data={pokemon}   
+            />
+          </div>
+        )
+      }))}
     </PokeListContainer>
   )
 }

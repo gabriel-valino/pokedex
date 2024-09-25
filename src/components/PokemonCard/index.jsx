@@ -1,17 +1,17 @@
 import { PokemonCardContainer } from "./styles";
 import { PokemonTypeTags } from '../PokemonTypeTag' 
 import { useEffect, useState } from "react";
-import { fetchPokemonDetails } from "../../api/api";
+import { fetchPokemonFirstDetails } from "../../api/api";
 
 export function PokemonCard ({ data }) {
-  const [details, setDetails] = useState(null)
+  const [ firstDetails, setFirstDetails ] = useState(null)
   const { name, url } = data
 
   useEffect(() => {
     async function getPokemonDetails() {
       try {
-        const data = await fetchPokemonDetails(url)
-        setDetails(data)
+        const data = await fetchPokemonFirstDetails(url)
+        setFirstDetails(data)
       } catch (error) {
         console.error('Erro ao buscar detalhes do pokémons:', error);
       }
@@ -20,16 +20,14 @@ export function PokemonCard ({ data }) {
     getPokemonDetails()
   }, [url])
 
-  console.log(details)
-
   return (
     <>
-      {details  && (
+      {firstDetails  && (
         <PokemonCardContainer>
-        <img src={details.imgUrl} alt={name} />
-        <p>Nº {details.id}</p>
-        <h3>Squirtle</h3>
-        <PokemonTypeTags types={details.types} name={name}/>
+          <img src={firstDetails.imgUrl} alt={name} />
+          <p>Nº {firstDetails.id}</p>
+          <h3>{firstDetails.name}</h3>
+        <PokemonTypeTags types={firstDetails.types} name={name}/>
         
       </PokemonCardContainer>
       )}
