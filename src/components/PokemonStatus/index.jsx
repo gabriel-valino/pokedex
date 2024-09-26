@@ -1,49 +1,51 @@
 import { PokemonAttribute, PokemonStatusContainer } from "./styles";
 
-export function PokemonStatus () {
+export function PokemonStatus ({ stats }) {
+  const { hp, attack, defense, specialAttack, specialDefense, speed, total } = stats
+
   return (
     <PokemonStatusContainer>
       <PokemonAttribute attribute="HP">
         <div>
           <span>HP</span>
         </div>
-        <span>108</span>
+        <span>{hp}</span>
       </PokemonAttribute>
       <PokemonAttribute attribute="ATK">
         <div>
           <span>ATK</span>
         </div>
-        <span>108</span>
+        <span>{attack}</span>
       </PokemonAttribute>
       <PokemonAttribute attribute="DEF">
         <div>
           <span>DEF</span>
         </div>
-        <span>108</span>
+        <span>{defense}</span>
       </PokemonAttribute>
       <PokemonAttribute attribute="SpA">
         <div>
           <span>SpA</span>
         </div>
-        <span>108</span>
+        <span>{specialAttack}</span>
       </PokemonAttribute>
       <PokemonAttribute attribute="SpD">
         <div>
           <span>SpD</span>
         </div>
-        <span>108</span>
+        <span>{specialDefense}</span>
       </PokemonAttribute>
       <PokemonAttribute attribute="SPD">
         <div>
           <span>SPD</span>
         </div>
-        <span>108</span>
+        <span>{speed}</span>
       </PokemonAttribute>
       <PokemonAttribute attribute="TOT">
         <div>
           <span>TOT</span>
         </div>
-        <span>108</span>
+        <span>{total}</span>
       </PokemonAttribute>
     </PokemonStatusContainer>
   )

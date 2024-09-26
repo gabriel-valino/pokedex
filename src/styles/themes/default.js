@@ -13,9 +13,8 @@ export const defaultTheme = {
   blue: '#85ddff',
   green: '#96da83',
   pink: '#fb94a8',
-  total: '#88aaea',
-
   
+  total: '#88aaea',
   normal: '#A8A878',
   fire: '#F08030',
   water: '#6890F0',
@@ -31,6 +30,7 @@ export const defaultTheme = {
   rock: '#B8A038',
   dragon: '#7038F8',
   dark: '#705848',
+  ghost: '#a3a3d7',
   steel: '#B8B8D0',
   fairy: '#F2BCC2',
 }

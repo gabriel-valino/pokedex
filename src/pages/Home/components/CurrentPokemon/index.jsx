@@ -3,11 +3,13 @@ import { AttributesContainer, CurrentPokemonContainer, EvolutionsContainer, Stat
 import { PokemonStatus } from "../../../../components/PokemonStatus";
 import { PokemonTypeTags } from "../../../../components/PokemonTypeTag";
 
-import squirtle from '/pokemons/007.png'
+// import squirtle from '/pokemons/006.png'
+
 import { usePokemon } from "../../../../contexts/PokemonsContext";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { fetchPokemonDetails } from "../../../../api/api";
-import { getPokemonImageUrlById } from "../../../../utils/getPokemonImageUrlById";
+import { EvolutionPokemonLevel } from "./components/EvolutionPokemonLevel";
+import { EvolutionPokemonButton } from "./components/EvolutionPokemonButton";
 
 export function CurrentPokemon() {
   const { currentPokemonSelected } = usePokemon()
@@ -29,70 +31,78 @@ export function CurrentPokemon() {
   }, [currentPokemonSelected])
 
   if (!currentPokemonSelected) {
-    return <h1>Nenhum Pokémon foi selecionado</h1>;
+    return <h1>Nenhum Pokémon foi selecionado</h1>
   }
   
   if (!details) {
-    return <h1>Carregando detalhes do Pokémon...</h1>; // Exibe uma mensagem enquanto os detalhes estão sendo carregados
+    return <h1>Carregando detalhes do Pokémon...</h1>
   }
 
-  const pokemonImage = getPokemonImageUrlById(details.id)
+  const { imgUrl, name, id, characteristic, types, height, weight, stats, evolutions } = details
+
+  console.log(evolutions)
 
   return (
     <>
       {details ? (
       <CurrentPokemonContainer>
         <div>
-          <img src={pokemonImage} alt={details.name} />
+          <img src={imgUrl} alt={name} />
           <div>
-          <p>Nº {details.id}</p>
-          <h1>{details.name}</h1>
+          <p>Nº {id}</p>
+          <h1>{name}</h1>
 
-          <PokemonTypeTags types={['water']} name="squirtle"/>
+          <PokemonTypeTags types={types} pokemonName={name}/>
 
           <h2>Characteristics</h2>
-          <span>Squirtle is a small, light-blue Pokémon with an appearance similar to a turtle.</span>
+          <span>{characteristic}</span>
 
           <AttributesContainer>
             <div>
               <h3>height</h3>
-              <p>0.3m</p>
+              <p>{height}</p>
             </div>
             <div>
               <h3>weight</h3>
-              <p>2kg</p>
+              <p>{weight}</p>
             </div>
           </AttributesContainer>
 
-          <StatusContainer>
+          <StatusContainer >
             <h3>Status</h3>
-            <PokemonStatus />
+            <PokemonStatus stats={stats}/>
           </StatusContainer>
 
-          <EvolutionsContainer>
-            <h3>Evolutions</h3>
-            <div>
-              <button>
-                <img src={squirtle} alt="pokemon name" />
-              </button>
-                
-              <div className="evolution-level">
-                <span>Lv. 31</span>
+            <EvolutionsContainer>
+              {evolutions.length >= 1 && <h3>Evolutions</h3>}
+              <div>
+              {
+                evolutions && evolutions.map((evolution, index, evolutionsArray) => {
+                  const isTheLastEvolution = evolutionsArray.length - 1 === index
+                  const hasOnlyOneEvolution = evolutionsArray.length === 1
+
+                  return (
+                    <React.Fragment key={index}>
+                      {hasOnlyOneEvolution ? (
+                        <>
+                          <EvolutionPokemonButton id={evolution.id}/>
+                          <EvolutionPokemonLevel level={evolution.nextEvolutionLevel}/>
+                          <EvolutionPokemonButton id={evolution.nextPokemonId}/>
+                        </>
+                      ) : (
+                        <>
+                          {!isTheLastEvolution && <EvolutionPokemonButton id={evolution.id}/>}
+                          <EvolutionPokemonLevel level={evolution.nextEvolutionLevel}/>
+                          <EvolutionPokemonButton id={evolution.nextPokemonId}/>
+                        </>
+                      )}
+                    </React.Fragment>
+                  )
+                })
+              }
               </div>
 
-              <button>
-              <img src={squirtle} alt="pokemon name" />
-              </button>
-
-              <div className="evolution-level">
-                <span>Lv. 31</span>
-              </div>
-
-              <button>
-                <img src={squirtle} alt="pokemon name" />
-              </button>
-              </div>
-            </EvolutionsContainer>
+          </EvolutionsContainer>
           </div>
         </div>   
     </CurrentPokemonContainer>) 

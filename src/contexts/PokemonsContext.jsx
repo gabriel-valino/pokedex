@@ -13,7 +13,7 @@ export const PokemonsContextProvider = ({ children }) => {
       getNextPageParam: (lastPage, pages) => {
         const totalPokemonsLoaded = pages.flatMap(page => page.results).length
         
-        if(totalPokemonsLoaded >= 150) {
+        if(totalPokemonsLoaded >= 200) {
           return undefined
         } 
 
