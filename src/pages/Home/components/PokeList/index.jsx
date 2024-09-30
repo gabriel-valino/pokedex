@@ -18,7 +18,7 @@ export function PokeList() {
           fetchNextPage();
         }
       }, {
-        rootMargin: "500px"
+        rootMargin: "700px"
       });
       if (node) observer.current.observe(node);
     },
