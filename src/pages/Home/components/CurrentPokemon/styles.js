@@ -3,22 +3,23 @@ import styled from "styled-components";
 export const CurrentPokemonContainer = styled.div`
   position: relative;
   flex: 2.5;
-  
-  >  div {
+     
+  > div {
     position: fixed;
     right: 0;
     width: 28vw;
-    padding: 40px 50px 10px 30px;
+    padding: 40px 30px 10px 30px;
     height: 62vh;
     border-radius: 10px 0 0 10px;
     background-color: white;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 
     display: flex;
     flex-direction: column;
     align-items: center;
 
-    > img {
+    > img.currentPokemon {
       max-width: 200px;
       top: -160px;
       position: absolute;
@@ -67,6 +68,89 @@ export const CurrentPokemonContainer = styled.div`
 
     @media (max-width: 1200px) {
       width: 25vw;
+      height: 70vh;
+      
+      > div {
+        overflow-y: scroll;
+        scrollbar-width: none;
+        height: 70vh;
+      }
+    }
+
+    @media (max-width: 1100px) {
+      display: unset;
+      z-index: 2;
+      width: 100vw;
+      bottom: 0;
+      right: 0;
+      position: fixed;
+      
+      padding: 0;
+      padding-top: 35px;
+      border-radius: 20px 20px 0 0;
+      animation: slide-in-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+
+      > img.currentPokemon {
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+      }
+    }
+  }
+  
+  @media (max-width: 1100px) {
+    display: ${props => props.$currentPokemonIsSelected ? 'unset' : 'none'}
+  }
+
+  @keyframes slide-in-bottom {
+    0% {
+      -webkit-transform: translateY(1000px);
+              transform: translateY(1000px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-in-right {
+    0% {
+      -webkit-transform: translateX(1000px);
+              transform: translateX(1000px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-out-top {
+    0% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: translateY(-1000px);
+              transform: translateY(-1000px);
+      opacity: 0;
+    }
+  }
+
+  @keyframes slide-out-bottom {
+    0% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: translateY(1000px);
+              transform: translateY(1000px);
+      opacity: 0;
     }
   }
 `
@@ -136,4 +220,30 @@ export const AttributesContainer = styled.div`
   > div h3 {
     color: ${(props) => props.theme['dark']};
   }
+`
+
+export const WithoutCurrentPokemonLoading = styled.div`
+  @media (max-width: 700px) {
+    display: none;
+    position: relative;
+  }
+
+  img {
+    max-width: 200px;
+    position: relative;
+    margin-bottom: 30px;
+  }
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 0;
+  border: ${(props) => props.theme['border']} 4px solid;
+  border-right: none;
+  width: 28vw;
+  padding: 40px 30px 10px 30px;
+  height: 62vh;
+  border-radius: 10px 0 0 10px;
+  background-color: white;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 `

@@ -1,12 +1,12 @@
-import { AttributesContainer, CurrentPokemonContainer, EvolutionsContainer, StatusContainer } from "./styles";
+import React, { useEffect, useState } from "react";
 
-import { PokemonStatus } from "../../../../components/PokemonStatus";
+import { AttributesContainer, CurrentPokemonContainer, EvolutionsContainer, StatusContainer, WithoutCurrentPokemonLoading } from "./styles";
+
 import { PokemonTypeTags } from "../../../../components/PokemonTypeTag";
-
-// import squirtle from '/pokemons/006.png'
+import { PokemonStatus } from "../../../../components/PokemonStatus";
 
 import { usePokemon } from "../../../../contexts/PokemonsContext";
-import React, { useEffect, useState } from "react";
+
 import { fetchPokemonDetails } from "../../../../api/api";
 import { EvolutionPokemonLevel } from "./components/EvolutionPokemonLevel";
 import { EvolutionPokemonButton } from "./components/EvolutionPokemonButton";
@@ -21,7 +21,7 @@ export function CurrentPokemon() {
         const data = await fetchPokemonDetails(url)
         setDetails(data)
       } catch (error) {
-        console.error('Erro ao buscar detalhes do pokémons:', error);
+        console.error('Error to fetch pokemon details.', error);
       }
     }
 
@@ -30,87 +30,80 @@ export function CurrentPokemon() {
     }
   }, [currentPokemonSelected])
 
-  if (!currentPokemonSelected) {
-    return <h1>Nenhum Pokémon foi selecionado</h1>
-  }
-  
-  if (!details) {
-    return <h1>Carregando detalhes do Pokémon...</h1>
+  if (!currentPokemonSelected || !details) {
+    return (
+      <CurrentPokemonContainer>
+        <WithoutCurrentPokemonLoading>
+          <img src="/pokeball.svg" alt="pokeball" className="loading" />
+        </WithoutCurrentPokemonLoading>
+      </CurrentPokemonContainer>
+    )
   }
 
   const { imgUrl, name, id, characteristic, types, height, weight, stats, evolutions } = details
 
-  console.log(evolutions)
-
   return (
     <>
-      {details ? (
-      <CurrentPokemonContainer>
+      <CurrentPokemonContainer key={id} $currentPokemonIsSelected={Boolean(currentPokemonSelected)}>
         <div>
-          <img src={imgUrl} alt={name} />
+          <img src={imgUrl} alt={name} className="currentPokemon"/>
           <div>
-          <p>Nº {id}</p>
-          <h1>{name}</h1>
+            <p>Nº {id}</p>
+            <h1>{name}</h1>
 
-          <PokemonTypeTags types={types} pokemonName={name}/>
+            <PokemonTypeTags types={types} pokemonName={name}/>
 
-          <h2>Characteristics</h2>
-          <span>{characteristic}</span>
+            <h2>Characteristics</h2>
+            <span>{characteristic}</span>
 
-          <AttributesContainer>
-            <div>
-              <h3>height</h3>
-              <p>{height}</p>
-            </div>
-            <div>
-              <h3>weight</h3>
-              <p>{weight}</p>
-            </div>
-          </AttributesContainer>
+            <AttributesContainer>
+              <div>
+                <h3>height</h3>
+                <p>{height}</p>
+              </div>
+              <div>
+                <h3>weight</h3>
+                <p>{weight}</p>
+              </div>
+            </AttributesContainer>
 
-          <StatusContainer >
-            <h3>Status</h3>
-            <PokemonStatus stats={stats}/>
-          </StatusContainer>
+            <StatusContainer >
+              <h3>Status</h3>
+              <PokemonStatus stats={stats}/>
+            </StatusContainer>
 
             <EvolutionsContainer>
               {evolutions.length >= 1 && <h3>Evolutions</h3>}
               <div>
-              {
-                evolutions && evolutions.map((evolution, index, evolutionsArray) => {
-                  const isTheLastEvolution = evolutionsArray.length - 1 === index
-                  const hasOnlyOneEvolution = evolutionsArray.length === 1
+                {
+                  evolutions && evolutions.map((evolution, index, evolutionsArray) => {
+                    const isTheLastEvolution = evolutionsArray.length - 1 === index
+                    const hasOnlyOneEvolution = evolutionsArray.length === 1
 
-                  return (
-                    <React.Fragment key={index}>
-                      {hasOnlyOneEvolution ? (
-                        <>
-                          <EvolutionPokemonButton id={evolution.id}/>
-                          <EvolutionPokemonLevel level={evolution.nextEvolutionLevel}/>
-                          <EvolutionPokemonButton id={evolution.nextPokemonId}/>
-                        </>
-                      ) : (
-                        <>
-                          {!isTheLastEvolution && <EvolutionPokemonButton id={evolution.id}/>}
-                          <EvolutionPokemonLevel level={evolution.nextEvolutionLevel}/>
-                          <EvolutionPokemonButton id={evolution.nextPokemonId}/>
-                        </>
-                      )}
-                    </React.Fragment>
-                  )
-                })
-              }
-              </div>
-
-          </EvolutionsContainer>
-          </div>
+                    return (
+                      <React.Fragment key={index}>
+                        {hasOnlyOneEvolution ? (
+                          <>
+                            <EvolutionPokemonButton id={evolution.id}/>
+                            <EvolutionPokemonLevel level={evolution.nextEvolutionLevel}/>
+                            <EvolutionPokemonButton id={evolution.nextPokemonId}/>
+                          </>
+                        ) : (
+                          <>
+                            {!isTheLastEvolution && <EvolutionPokemonButton id={evolution.id}/>}
+                            <EvolutionPokemonLevel level={evolution.nextEvolutionLevel}/>
+                            <EvolutionPokemonButton id={evolution.nextPokemonId}/>
+                          </>
+                        )}
+                      </React.Fragment>
+                      )
+                    })
+                  }
+                </div>
+              </EvolutionsContainer>
+            </div>
         </div>   
-    </CurrentPokemonContainer>) 
-    : (
-      <CurrentPokemonContainer>
-        <div></div>
       </CurrentPokemonContainer>
-    )}
     </>
   )
 }

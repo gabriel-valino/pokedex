@@ -6,7 +6,7 @@ const PokemonsContext = createContext();
 
 export const PokemonsContextProvider = ({ children }) => {
   const [currentPokemonSelected, setCurrentPokemonSelected]  = useState(null)  
-  const { data: pokemons, hasNextPage, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
+  const { data: pokemons, hasNextPage, fetchNextPage, isFetchingNextPage, isLoading, isFetching } = useInfiniteQuery(
     {
       queryKey: ['pokemons'],
       queryFn: ({ pageParam = 0 }) => fetchPokemons(pageParam),
@@ -28,7 +28,7 @@ export const PokemonsContextProvider = ({ children }) => {
   }
 
   return (
-    <PokemonsContext.Provider value={{ pokemons, hasNextPage, fetchNextPage, isFetchingNextPage, setCurrentPokemon, currentPokemonSelected }}>
+    <PokemonsContext.Provider value={{ pokemons, hasNextPage, fetchNextPage, isLoading,isFetchingNextPage, isFetching, setCurrentPokemon, currentPokemonSelected }}>
       {children}
     </PokemonsContext.Provider>
   )

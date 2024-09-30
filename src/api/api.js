@@ -34,6 +34,13 @@ export async function fetchPokemonFirstDetails(url) {
   }
 } 
 
+export async function fetchPokemonUrlById(id) {
+  const response = await axios
+    .get(`https://pokeapi.co/api/v2/pokemon/${id}`)
+
+  return response.data
+}
+
 export async function fetchPokemonCharacteristic(speciesUrl) {
   const response = await axios
     .get(speciesUrl)
@@ -97,10 +104,9 @@ export async function fetchPokemonDetails(url) {
   const characteristic = await fetchPokemonCharacteristic(details.species.url)
   const id = details.id
   const { height, weight } = getPokemonMeasurements(details)
-  const types = getPokemonTypes(details)
+  const types = details.types ? getPokemonTypes(details) : [];
   const imgUrl = getPokemonImageUrlById(id)
   const stats = getPokemonStats(details)
-  console.log(details)
   const evolutions = await fetchPokemonEvolutions(details.species.url)
 
   return {
