@@ -5,7 +5,7 @@ import { useCallback, useRef } from "react";
 import { usePokemon } from "../../../../contexts/PokemonsContext";
 
 export function PokeList() {
-  const { pokemons, hasNextPage, fetchNextPage, isFetchingNextPage, setCurrentPokemon } = usePokemon()
+  const { pokemons, filteredPokemons, hasNextPage, fetchNextPage, isFetchingNextPage, setCurrentPokemon } = usePokemon()
 
   const observer = useRef()
 
@@ -24,6 +24,26 @@ export function PokeList() {
     },
     [isFetchingNextPage, fetchNextPage, hasNextPage]
   )
+
+  if(filteredPokemons) {
+    return (
+      <PokeListContainer>
+        {filteredPokemons.map(pokemon => {
+          return (
+            <div 
+              key={pokemon.url} 
+              onClick={() => setCurrentPokemon(pokemon)}
+            >
+              <PokemonCard 
+                data={pokemon}   
+              />
+            </div>
+          )
+        })}
+  
+      </PokeListContainer>
+    )
+  }
 
   return (
     <PokeListContainer>

@@ -122,5 +122,10 @@ export async function fetchPokemonDetails(url) {
   }
 } 
 
+export async function fetchPokemonsByName (name){
+  const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=900`)
+  const data = await response.json();
 
+  return data.results.filter((pokemon) => pokemon.name.startsWith(name.toLowerCase()));
+};
 

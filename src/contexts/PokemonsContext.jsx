@@ -6,6 +6,8 @@ const PokemonsContext = createContext();
 
 export const PokemonsContextProvider = ({ children }) => {
   const [currentPokemonSelected, setCurrentPokemonSelected]  = useState(null)  
+  const [filteredPokemons, setFilteredPokemons]  = useState(null)  
+
   const { data: pokemons, hasNextPage, fetchNextPage, isFetchingNextPage, isLoading, isFetching } = useInfiniteQuery(
     {
       queryKey: ['pokemons'],
@@ -22,13 +24,27 @@ export const PokemonsContextProvider = ({ children }) => {
     }
   )
   
-
   function setCurrentPokemon (pokemonData) {
     setCurrentPokemonSelected(pokemonData)
   }
 
+  function setFilteredPokemonsAccordingToSearch(searchData) {
+    setFilteredPokemons(searchData)
+  }
+
   return (
-    <PokemonsContext.Provider value={{ pokemons, hasNextPage, fetchNextPage, isLoading,isFetchingNextPage, isFetching, setCurrentPokemon, currentPokemonSelected }}>
+    <PokemonsContext.Provider value={{ 
+      pokemons,
+      hasNextPage,
+      fetchNextPage,
+      isLoading,
+      isFetchingNextPage,
+      isFetching,
+      setCurrentPokemon,
+      currentPokemonSelected,
+      setFilteredPokemonsAccordingToSearch,
+      filteredPokemons
+    }}>
       {children}
     </PokemonsContext.Provider>
   )

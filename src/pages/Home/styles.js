@@ -25,6 +25,7 @@ export const PokemonContent = styled.main`
     padding-left: 8vw;
     padding-right: 8vw;
     gap: 0;
+    display: block;
   }
 `
 
