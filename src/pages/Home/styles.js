@@ -51,6 +51,10 @@ export const ButtonToTop = styled.button`
   @media (max-width: 1100px) {
     display: ${props => props.$show ? 'flex': 'none'};
     opacity: ${props => props.$currentPokemonIsSelected ? 0 : 1};
+
+    &:hover {
+      opacity: 1;
+    }
   }
 `
 
