@@ -9,10 +9,38 @@ export const Loading = styled.div`
 
 export const HomeContainer = styled.div`
   height: 100vh;
+`
 
-  @media (max-width: 1100px) {
-    overflow: ${props => props.$currentPokemonIsSelected ? 'hidden' : 'auto'}
+export const ButtonToTop = styled.button`
+  position: fixed;
+  bottom: 80px;
+  left: 6vw;
+  border: none;
+
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+  border: none; 
+  text-align: center;
+  display: ${props => props.$show ? 'flex': 'none'};
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  opacity: 1;
+
+  &:hover {
+    opacity: 0.4;
   }
+
+  img {
+    width: 36px;
+    height: 36px;
+  }   
 `
 
 export const PokemonContent = styled.main`

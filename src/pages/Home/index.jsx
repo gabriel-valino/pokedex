@@ -1,5 +1,5 @@
 import { Header } from "../../components/Header";
-import { CloseModalButton, HomeContainer, Loading, Overflow, PokedexInfo, PokemonContent } from "./styles";
+import { ButtonToTop, CloseModalButton, HomeContainer, Loading, Overflow, PokedexInfo, PokemonContent } from "./styles";
 
 import { SearchBar } from "./components/SearchBar";
 import { PokeList } from "./components/PokeList";
@@ -9,15 +9,39 @@ import { useEffect, useState } from "react";
 import { fetchPokemonDetails } from "../../api/api";
 
 import closeButton from '/close-button.svg'
+import arrowUp from '/arrow-up.svg'
 
 export function Home() {
   const { currentPokemonSelected, setCurrentPokemon } = usePokemon()
   const [ currentPokemonFirstType, setCurrentPokemonFirstType ] = useState("")
+  const [show, setShow] = useState(false)
 
   function handleCloseModal () {
     setCurrentPokemon(null)
     setCurrentPokemonFirstType('')
   }
+
+  const handleScroll = () => {
+    if (window.scrollY > 300) {
+      setShow(true);
+    } else {
+      setShow(false);
+    }
+  }
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     if (!currentPokemonSelected) {
@@ -45,6 +69,9 @@ export function Home() {
           <SearchBar />
           <PokeList />
         </PokedexInfo>
+        <ButtonToTop $show={show} onClick={scrollToTop}>
+          <img src={arrowUp} alt="arrow up" />
+        </ButtonToTop>
         {currentPokemonSelected && (
           <>
             <Overflow type={currentPokemonFirstType}/>
