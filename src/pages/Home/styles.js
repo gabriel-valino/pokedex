@@ -10,7 +10,6 @@ export const Loading = styled.div`
 export const HomeContainer = styled.div`
   height: 100vh;
 
-
   @media (max-width: 1100px) {
     /* overflow: ${props => props.$currentPokemonIsSelected ? 'hidden' : 'auto'}; */
   }
@@ -30,7 +29,7 @@ export const ButtonToTop = styled.button`
   display: ${props => props.$show ? 'flex': 'none'};
   justify-content: center;
   align-items: center;
-  z-index: 3;
+  z-index: 2;
 
   cursor: pointer;
   transition: all 0.1s ease-in-out;

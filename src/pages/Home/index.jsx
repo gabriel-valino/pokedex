@@ -69,7 +69,7 @@ export function Home() {
           <SearchBar />
           <PokeList />
         </PokedexInfo>
-        <ButtonToTop $show={show} onTouchStart={scrollToTop} $currentPokemonIsSelected={Boolean(currentPokemonSelected)}>
+        <ButtonToTop $show={show} onClick={scrollToTop} onTouchStart={scrollToTop} $currentPokemonIsSelected={Boolean(currentPokemonSelected)}>
           <img src={arrowUp} alt="arrow up" />
         </ButtonToTop>
         {currentPokemonSelected && (
