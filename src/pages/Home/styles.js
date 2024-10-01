@@ -9,6 +9,11 @@ export const Loading = styled.div`
 
 export const HomeContainer = styled.div`
   height: 100vh;
+
+
+  @media (max-width: 1100px) {
+    /* overflow: ${props => props.$currentPokemonIsSelected ? 'hidden' : 'auto'}; */
+  }
 `
 
 export const ButtonToTop = styled.button`
@@ -38,9 +43,15 @@ export const ButtonToTop = styled.button`
   }
 
   img {
+    line-height: 100%;
     width: 36px;
     height: 36px;
   }   
+
+  @media (max-width: 1100px) {
+    display: ${props => props.$show ? 'flex': 'none'};
+    opacity: ${props => props.$currentPokemonIsSelected ? 0 : 1};
+  }
 `
 
 export const PokemonContent = styled.main`
@@ -70,6 +81,7 @@ export const Overflow = styled.div`
 
   @media (max-width: 1100px) {
     display: unset;
+    overflow: ${props => props.$currentPokemonIsSelected ? 'hidden' : 'auto'}
   }
 `
 

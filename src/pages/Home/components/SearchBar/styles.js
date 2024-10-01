@@ -19,15 +19,19 @@ export const SearchBarContainer = styled.form`
     box-shadow: none;
   }
 
-  img {
+  button {
+    display: flex;
+    border: none;
     padding: 8px;
     background-color: ${(props) => props.theme.red};
     border-radius: 10px;
     cursor: pointer;
     box-shadow: #ff535088 5px 5px 15px;
+    align-items: center;
   }
 
-  img:hover {
-    background-color: ${(props) => props.theme['red-500']};
+  button:hover {
+    background-color: #ff1c1c;
   }
+
 `

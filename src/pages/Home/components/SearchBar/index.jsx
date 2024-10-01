@@ -37,8 +37,10 @@ export function SearchBar() {
 
   return (
     <SearchBarContainer onSubmit={handleSubmit(onSubmit)}>
-      <input type="text" placeholder="Search a pokemon" {...register("pokemonName")}/>
-      <img src={searchIcon} alt="search icon - pokeball" />
+      <input type="text" id="search" placeholder="Search a pokemon" {...register("pokemonName")}/>
+      <button type="submit" htmlFor="search">
+        <img src={searchIcon} alt="search icon - pokeball" />
+      </button>
       {errors.pokemonName && <span>{errors.pokemonName.message}</span>}
     </SearchBarContainer>
   )

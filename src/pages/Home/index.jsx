@@ -22,7 +22,7 @@ export function Home() {
   }
 
   const handleScroll = () => {
-    if (window.scrollY > 300) {
+    if (window.scrollY > 1000) {
       setShow(true);
     } else {
       setShow(false);
@@ -65,11 +65,11 @@ export function Home() {
     <HomeContainer $currentPokemonIsSelected={Boolean(currentPokemonSelected)}>
       <Header />
       <PokemonContent>
-        <PokedexInfo>
+        <PokedexInfo >
           <SearchBar />
           <PokeList />
         </PokedexInfo>
-        <ButtonToTop $show={show} onClick={scrollToTop}>
+        <ButtonToTop $show={show} onClick={scrollToTop} $currentPokemonIsSelected={Boolean(currentPokemonSelected)}>
           <img src={arrowUp} alt="arrow up" />
         </ButtonToTop>
         {currentPokemonSelected && (

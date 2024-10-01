@@ -40,7 +40,6 @@ export function PokeList() {
             </div>
           )
         })}
-  
       </PokeListContainer>
     )
   }

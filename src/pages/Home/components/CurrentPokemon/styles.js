@@ -79,7 +79,7 @@ export const CurrentPokemonContainer = styled.div`
 
     @media (max-width: 1100px) {
       display: unset;
-      z-index: 2;
+      z-index: 5;
       width: 100%;
       bottom: 0;
       right: 0;

@@ -12,7 +12,7 @@ export const Global = createGlobalStyle`
     box-shadow: 0 0 0 2px ${(props) => props.theme.dark}
   }
 
-  body{
+  body {
     background-color: ${(props) => props.theme.background};
     color: ${({ theme }) => theme.text};
     -webkit-font-smoothing: antialiased;
@@ -20,10 +20,6 @@ export const Global = createGlobalStyle`
 
     > div {
       height: 100vh;
-    }
-
-    @media (max-width: 1100px) {
-      overflow: ${props => props.$currentPokemonIsSelected ? 'hidden' : 'auto'}
     }
   }
 
