@@ -68,12 +68,12 @@ export const CurrentPokemonContainer = styled.div`
 
     @media (max-width: 1200px) {
       width: 25vw;
-      height: 70vh;
+      height: 62vh;
       
       > div {
         overflow-y: scroll;
         scrollbar-width: none;
-        height: 70vh;
+        height: 56vh;
       }
     }
 

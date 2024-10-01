@@ -22,7 +22,7 @@ export const PokemonCardContainer = styled.div`
     max-width: 74px;  
     object-fit: cover;
 
-    @media (max-width: 1100px) {
+    @media (max-width: 600px) {
       max-width: 54px; 
       height: 54px;
     } 
