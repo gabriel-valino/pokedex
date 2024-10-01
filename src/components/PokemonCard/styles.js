@@ -19,9 +19,13 @@ export const PokemonCardContainer = styled.div`
   transition: 100ms ease-out;
 
   > img {
-    width: 74px;
-    min-width: 35%; 
+    max-width: 74px;  
     object-fit: cover;
+
+    @media (max-width: 1100px) {
+      max-width: 54px; 
+      height: 54px;
+    } 
   }
 
   > p {

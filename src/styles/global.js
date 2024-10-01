@@ -18,6 +18,10 @@ export const Global = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     height: 100vh;
 
+    @media (max-width: 1100px) {
+      overflow: ${props => props.currentPokemonSelected ? 'hidden': 'auto'};
+    }
+
     > div {
       height: 100vh;
     }
