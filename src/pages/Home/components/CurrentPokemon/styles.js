@@ -62,6 +62,7 @@ export const CurrentPokemonContainer = styled.div`
     > div > span {
       margin-top: 10px;
       text-align: center;
+      color: #746b68;
       font-weight: 500;
       width: 80%;
     }

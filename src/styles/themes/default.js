@@ -8,11 +8,6 @@ export const defaultTheme = {
   'search-button': '#ff5350',
 
   red: '#df2140',
-  orange: '#ff994d',
-  yellow: '#eecd3d',
-  blue: '#85ddff',
-  green: '#96da83',
-  pink: '#fb94a8',
   
   total: '#88aaea',
   normal: '#A8A878',

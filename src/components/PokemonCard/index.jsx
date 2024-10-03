@@ -24,12 +24,15 @@ export function PokemonCard ({ data }) {
     <>
       {firstDetails  && (
         <PokemonCardContainer>
-          <img src={firstDetails.imgUrl} alt={name} />
-          <p>Nº {firstDetails.id}</p>
-          <h3>{firstDetails.name}</h3>
-        <PokemonTypeTags types={firstDetails.types} name={name}/>
-        
-      </PokemonCardContainer>
+          <div>
+            
+              <img src={firstDetails.imgUrl} alt={name} />
+              <p>Nº {firstDetails.id}</p>
+              <h3>{firstDetails.name}</h3>
+            
+          <PokemonTypeTags types={firstDetails.types} name={name}/>
+        </div>
+        </PokemonCardContainer>
       )}
     </>
   )

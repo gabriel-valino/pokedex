@@ -9,7 +9,9 @@ export const Global = createGlobalStyle`
 
   :focus {
     outline: 0;
-    box-shadow: 0 0 0 2px ${(props) => props.theme.dark}
+    border: 2px ${(props) => props.theme['red']} solid;
+    border-radius: 10px;
+    
   }
 
   body {

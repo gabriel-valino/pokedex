@@ -58,11 +58,11 @@ export function CurrentPokemon() {
 
             <AttributesContainer>
               <div>
-                <h3>height</h3>
+                <h3>Height</h3>
                 <p>{height}</p>
               </div>
               <div>
-                <h3>weight</h3>
+                <h3>Weight</h3>
                 <p>{weight}</p>
               </div>
             </AttributesContainer>
