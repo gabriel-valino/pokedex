@@ -3,6 +3,15 @@ import styled from "styled-components";
 export const PokemonCardContainer = styled.button`
   width: 100%;
   border: 2px solid transparent; 
+  border-radius: 10px;
+
+  &:focus {
+      border-color: ${(props) => props.theme['red']};
+    }
+
+  &:hover {
+    border-color: ${(props) => props.theme['red']};
+  }  
 
   > div {
     display: flex;
@@ -16,15 +25,13 @@ export const PokemonCardContainer = styled.button`
     border-radius: 10px;
 
     background-color: white;
-    box-sizing: content-box;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-sizing: border-box;
     cursor: pointer;
-    border: 2px solid transparent; 
     transition: 100ms ease-out;
 
-    &:hover {
-      border-color: ${(props) => props.theme['border']};
-    }
+    
+
+    
 
     &:hover img{
       scale: 120%;
@@ -37,10 +44,6 @@ export const PokemonCardContainer = styled.button`
     border: none;
     background-color: transparent;
     cursor: pointer;
-
-    &:focus {
-
-    }
   }
 
   > div > img {

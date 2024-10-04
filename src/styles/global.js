@@ -11,8 +11,7 @@ export const Global = createGlobalStyle`
     outline: 0;
     border: 2px ${(props) => props.theme['red']} solid;
     border-radius: 10px;
-    
-  }
+  } 
 
   body {
     background-color: ${(props) => props.theme.background};
