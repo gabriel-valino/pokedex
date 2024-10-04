@@ -22,7 +22,7 @@ export function SearchBar() {
 
   const pokemonName = watch('pokemonName') || ""
 
-  const { data: filteredPokemonsArray, isLoading } = useQuery({
+  const { data: filteredPokemonsArray } = useQuery({
     queryKey: ['pokemons', pokemonName],
     queryFn: () => fetchPokemonsByName(pokemonName),
     enabled: pokemonName.length > 0, 
@@ -37,7 +37,7 @@ export function SearchBar() {
 
   return (
     <SearchBarContainer onSubmit={handleSubmit(onSubmit)}>
-      <input type="text" id="search" placeholder="Search a pokemon" {...register("pokemonName")}/>
+      <input type="text" id="search" placeholder="Search for a Pokémon" {...register("pokemonName")}/>
       <button type="submit" htmlFor="search">
         <img src={searchIcon} alt="search icon - pokeball" />
       </button>
