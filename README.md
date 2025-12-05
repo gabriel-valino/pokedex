@@ -4,8 +4,7 @@ Uma Pokédex interativa desenvolvida com React, que permite aos usuários buscar
 
 ## 🚀 Demonstração
 
-**Live:** https://pokedex-eight-pink.vercel.app  
-**Repositório:** [github.com/gabriel-valino/pokedex](https://github.com/gabriel-valino/pokedex)
+**Live:** [https://pokedex-eight-pink.vercel.app](https://pokedex-eight-pink.vercel.app)
 
 ![Demonstração da Pokédex](./pokedex.png)
 
